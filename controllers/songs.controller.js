@@ -39,9 +39,9 @@ exports.findOne = (app, client, req, res) => {
   const songsCollection = db.collection("songs");
 
   songsCollection
-    .find()
-    .toArray()
+    .findOne({ _id: new ObjectID(req.params.id) })
     .then((results) => {
+      console.log(results);
       res.status(200).send(results);
     })
     .catch((error) => {
